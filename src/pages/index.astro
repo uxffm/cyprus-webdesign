@@ -1,0 +1,193 @@
+---
+import Navbar from '../components/Navbar.astro';
+
+const siteTitle = "Cyprus Web Design | Professional Website Development in Cyprus";
+const siteDescription = "Leading web design agency in Cyprus. We create stunning, responsive websites for businesses across Limassol, Nicosia, Paphos, and Larnaca. Custom web development, SEO, and digital solutions.";
+const siteUrl = "https://cypruswebdesign.com";
+const siteName = "Cyprus Web Design";
+const siteKeywords = "web design cyprus, website design cyprus, web development cyprus, cyprus web designer, website developer cyprus, limassol web design, nicosia web design, paphos web design, larnaca web design, professional website cyprus, ecommerce website cyprus, responsive web design cyprus, SEO cyprus, digital agency cyprus";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Essential Meta Tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<!-- Primary SEO Meta Tags -->
+		<title>{siteTitle}</title>
+		<meta name="title" content={siteTitle} />
+		<meta name="description" content={siteDescription} />
+		<meta name="keywords" content={siteKeywords} />
+		<meta name="author" content={siteName} />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="English" />
+		<meta name="revisit-after" content="7 days" />
+
+		<!-- Canonical URL -->
+		<link rel="canonical" href={siteUrl} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:locale" content="en_CY" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={siteUrl} />
+		<meta name="twitter:title" content={siteTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+		<meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
+
+		<!-- Geographic Meta Tags for Cyprus -->
+		<meta name="geo.region" content="CY" />
+		<meta name="geo.placename" content="Cyprus" />
+		<meta name="geo.position" content="35.1264;33.4299" />
+		<meta name="ICBM" content="35.1264, 33.4299" />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+		<!-- Generator -->
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Structured Data / JSON-LD for Local Business -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "ProfessionalService",
+			"name": "Cyprus Web Design",
+			"description": "Professional web design and development agency in Cyprus. We create stunning, responsive websites for businesses across Cyprus.",
+			"url": "https://cypruswebdesign.com",
+			"logo": "https://cypruswebdesign.com/logo.png",
+			"image": "https://cypruswebdesign.com/og-image.jpg",
+			"telephone": "+357-00-000000",
+			"email": "info@cypruswebdesign.com",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Limassol",
+				"addressRegion": "Limassol",
+				"addressCountry": "CY"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": "34.6786",
+				"longitude": "33.0413"
+			},
+			"areaServed": [
+				{
+					"@type": "City",
+					"name": "Limassol"
+				},
+				{
+					"@type": "City",
+					"name": "Nicosia"
+				},
+				{
+					"@type": "City",
+					"name": "Paphos"
+				},
+				{
+					"@type": "City",
+					"name": "Larnaca"
+				},
+				{
+					"@type": "Country",
+					"name": "Cyprus"
+				}
+			],
+			"serviceType": [
+				"Web Design",
+				"Web Development",
+				"E-commerce Development",
+				"SEO Services",
+				"Digital Marketing",
+				"UI/UX Design"
+			],
+			"priceRange": "$$",
+			"openingHoursSpecification": {
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": [
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday"
+				],
+				"opens": "09:00",
+				"closes": "18:00"
+			},
+			"sameAs": [
+				"https://www.facebook.com/cypruswebdesign",
+				"https://www.instagram.com/cypruswebdesign",
+				"https://www.linkedin.com/company/cypruswebdesign"
+			]
+		}
+		</script>
+
+		<!-- Website Schema -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Cyprus Web Design",
+			"url": "https://cypruswebdesign.com",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://cypruswebdesign.com/search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		}
+		</script>
+
+		<!-- Organization Schema -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Cyprus Web Design",
+			"url": "https://cypruswebdesign.com",
+			"logo": "https://cypruswebdesign.com/logo.png",
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+357-00-000000",
+				"contactType": "customer service",
+				"areaServed": "CY",
+				"availableLanguage": ["English", "Greek"]
+			}
+		}
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+				background: #eeeceb;
+				color: #1e293b;
+				min-height: 100vh;
+			}
+		</style>
+	</head>
+	<body>
+		<Navbar />
+	</body>
+</html>
