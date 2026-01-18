@@ -181,13 +181,58 @@ const siteKeywords = "web design cyprus, website design cyprus, web development 
 
 			body {
 				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-				background: #eeeceb;
+				background: #e8e6e3;
 				color: #1e293b;
 				min-height: 100vh;
+				position: relative;
+				overflow-x: hidden;
+			}
+
+			.dappled-light {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+				overflow: hidden;
+			}
+
+			.dappled-light::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				right: -20%;
+				width: 150%;
+				height: 200%;
+				background:
+					repeating-linear-gradient(
+						-55deg,
+						transparent 0px,
+						transparent 80px,
+						rgba(255,255,255,0.7) 80px,
+						rgba(255,255,255,0.7) 120px,
+						transparent 120px,
+						transparent 200px
+					);
+				filter: blur(40px);
+				opacity: 0.6;
+			}
+
+			.dappled-light::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.3) 100%);
 			}
 		</style>
 	</head>
 	<body>
+		<div class="dappled-light"></div>
 		<Navbar />
 	</body>
 </html>
