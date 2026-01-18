@@ -6,15 +6,19 @@ import { Home, User, Menu, Pencil, Moon } from '@lucide/astro';
 	<div class="nav-links">
 		<a href="#home" class="nav-item active" data-section="home" aria-label="Home">
 			<Home size={22} />
+			<span class="nav-label">Home</span>
 		</a>
 		<a href="#about" class="nav-item" data-section="about" aria-label="About">
 			<User size={22} />
+			<span class="nav-label">About</span>
 		</a>
 		<a href="#services" class="nav-item" data-section="services" aria-label="Services">
 			<Menu size={22} />
+			<span class="nav-label">Services</span>
 		</a>
 		<a href="#portfolio" class="nav-item" data-section="portfolio" aria-label="Portfolio">
 			<Pencil size={22} />
+			<span class="nav-label">Portfolio</span>
 		</a>
 	</div>
 	<button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
@@ -39,16 +43,11 @@ import { Home, User, Menu, Pencil, Moon } from '@lucide/astro';
 		flex-direction: column;
 		align-items: center;
 		gap: 8px;
-		padding: 16px 12px;
-		background: #fff;
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-radius: 24px;
-		border: 1px solid rgba(0, 0, 0, 0.05);
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+		padding: 8px;
 	}
 
 	.nav-item {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -58,6 +57,29 @@ import { Home, User, Menu, Pencil, Moon } from '@lucide/astro';
 		color: rgba(30, 41, 59, 0.4);
 		text-decoration: none;
 		transition: all 0.3s ease;
+	}
+
+	.nav-label {
+		position: absolute;
+		left: 70px;
+		background: #1e293b;
+		color: #fff;
+		padding: 6px 12px;
+		border-radius: 8px;
+		font-size: 13px;
+		font-weight: 500;
+		white-space: nowrap;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-8px);
+		transition: all 0.2s ease;
+		pointer-events: none;
+	}
+
+	.nav-item:hover .nav-label {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(0);
 	}
 
 	.nav-item :global(svg) {
@@ -75,7 +97,9 @@ import { Home, User, Menu, Pencil, Moon } from '@lucide/astro';
 
 	.nav-item.active {
 		color: #1e293b;
-		background: rgba(30, 41, 59, 0.1);
+		background: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 	}
 
 	.theme-toggle {
@@ -99,22 +123,33 @@ import { Home, User, Menu, Pencil, Moon } from '@lucide/astro';
 	/* Mobile responsive */
 	@media (max-width: 768px) {
 		.navbar {
-			left: 50%;
-			top: auto;
-			bottom: 24px;
-			transform: translateX(-50%);
+			left: 20px;
+			top: 20px;
 			flex-direction: row;
 		}
 
 		.nav-links {
 			flex-direction: row;
-			padding: 12px 16px;
+			padding: 4px;
+			gap: 4px;
+		}
+
+		.nav-item {
+			width: 40px;
+			height: 40px;
+		}
+
+		.nav-label {
+			display: none;
 		}
 
 		.theme-toggle {
-			position: absolute;
-			top: -60px;
-			right: 0;
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			left: auto;
+			width: 40px;
+			height: 40px;
 		}
 	}
 </style>
