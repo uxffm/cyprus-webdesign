@@ -1,11 +1,25 @@
 ---
 import Navbar from '../components/Navbar.astro';
+import { Linkedin, Mail, Github } from '@lucide/astro';
 
 const siteTitle = "Cyprus Web Design | Professional Website Development in Cyprus";
 const siteDescription = "Leading web design agency in Cyprus. We create stunning, responsive websites for businesses across Limassol, Nicosia, Paphos, and Larnaca. Custom web development, SEO, and digital solutions.";
 const siteUrl = "https://cypruswebdesign.com";
 const siteName = "Cyprus Web Design";
 const siteKeywords = "web design cyprus, website design cyprus, web development cyprus, cyprus web designer, website developer cyprus, limassol web design, nicosia web design, paphos web design, larnaca web design, professional website cyprus, ecommerce website cyprus, responsive web design cyprus, SEO cyprus, digital agency cyprus";
+
+const personalFacts = [
+	"Web designer & developer based in Cyprus",
+	"Specialized in modern, responsive websites",
+	"Serving businesses across Limassol, Nicosia & beyond",
+	"Passionate about clean, user-focused design"
+];
+
+const projects = [
+	{ name: "solokit", bgColor: "#1a1a1a", textColor: "#fff" },
+	{ name: "Rain Check", bgColor: "#1e3a2f", textColor: "#fff" },
+	{ name: "Local Rush", bgColor: "#e5a33d", textColor: "#1a1a1a" }
+];
 ---
 
 <!DOCTYPE html>
@@ -229,10 +243,436 @@ const siteKeywords = "web design cyprus, website design cyprus, web development 
 				height: 100%;
 				background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.3) 100%);
 			}
+
+			/* Main content */
+			.main-content {
+				position: relative;
+				z-index: 1;
+				padding: 80px 120px 80px 140px;
+				max-width: 900px;
+			}
+
+			/* Hero section */
+			.hero {
+				margin-bottom: 80px;
+			}
+
+			.name {
+				font-family: 'Georgia', serif;
+				font-size: 4.5rem;
+				font-weight: 700;
+				line-height: 1.05;
+				color: #2d3748;
+				margin-bottom: 32px;
+				letter-spacing: -0.02em;
+			}
+
+			.bio {
+				font-size: 1.15rem;
+				line-height: 1.7;
+				color: #4a5568;
+				margin-bottom: 28px;
+				max-width: 600px;
+			}
+
+			.bio em {
+				font-style: italic;
+			}
+
+			.read-more {
+				color: #4299e1;
+				text-decoration: none;
+				font-weight: 500;
+			}
+
+			.read-more:hover {
+				text-decoration: underline;
+			}
+
+			/* Facts list */
+			.facts {
+				list-style: none;
+				margin-bottom: 20px;
+			}
+
+			.fact {
+				font-size: 1rem;
+				color: #718096;
+				padding: 6px 0;
+				line-height: 1.5;
+			}
+
+			/* More button */
+			.more-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				padding: 8px 16px;
+				background: rgba(255, 255, 255, 0.7);
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				border-radius: 20px;
+				font-size: 0.8rem;
+				font-weight: 600;
+				color: #4a5568;
+				cursor: pointer;
+				margin-bottom: 32px;
+				transition: all 0.2s ease;
+			}
+
+			.more-btn:hover {
+				background: rgba(255, 255, 255, 0.9);
+				border-color: rgba(0, 0, 0, 0.15);
+			}
+
+			/* Social links */
+			.social-links {
+				display: flex;
+				gap: 20px;
+				margin-bottom: 20px;
+			}
+
+			.social-links a {
+				color: #2d3748;
+				transition: all 0.2s ease;
+			}
+
+			.social-links a:hover {
+				color: #4299e1;
+				transform: translateY(-2px);
+			}
+
+			/* Recent Work section */
+			.recent-work {
+				padding-top: 20px;
+			}
+
+			.section-title {
+				font-family: 'Georgia', serif;
+				font-size: 2.2rem;
+				font-weight: 700;
+				color: #2d3748;
+				margin-bottom: 32px;
+			}
+
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 20px;
+			}
+
+			.project-card {
+				aspect-ratio: 1;
+				border-radius: 16px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-decoration: none;
+				font-size: 1.4rem;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+			}
+
+			.project-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+			}
+
+			.project-name {
+				text-align: center;
+			}
+
+			/* Dark mode styles */
+			:root {
+				--bg-color: #e8e6e3;
+				--text-color: #2d3748;
+				--text-secondary: #4a5568;
+				--text-muted: #718096;
+				--link-color: #4299e1;
+				--card-bg: rgba(255, 255, 255, 0.7);
+			}
+
+			html.dark {
+				--bg-color: #1a1a2e;
+				--text-color: #e2e8f0;
+				--text-secondary: #a0aec0;
+				--text-muted: #718096;
+				--link-color: #63b3ed;
+				--card-bg: rgba(255, 255, 255, 0.1);
+			}
+
+			html.dark body {
+				background: var(--bg-color);
+				color: var(--text-color);
+			}
+
+			html.dark .dappled-light::before {
+				background:
+					repeating-linear-gradient(
+						-55deg,
+						transparent 0px,
+						transparent 80px,
+						rgba(255,255,255,0.1) 80px,
+						rgba(255,255,255,0.1) 120px,
+						transparent 120px,
+						transparent 200px
+					);
+				opacity: 0.3;
+			}
+
+			html.dark .dappled-light::after {
+				background: linear-gradient(135deg, transparent 40%, rgba(100, 100, 150, 0.1) 100%);
+			}
+
+			html.dark .name {
+				color: var(--text-color);
+			}
+
+			html.dark .bio {
+				color: var(--text-secondary);
+			}
+
+			html.dark .fact {
+				color: var(--text-muted);
+			}
+
+			html.dark .more-btn {
+				background: rgba(255, 255, 255, 0.1);
+				border-color: rgba(255, 255, 255, 0.15);
+				color: var(--text-secondary);
+			}
+
+			html.dark .more-btn:hover {
+				background: rgba(255, 255, 255, 0.15);
+			}
+
+			html.dark .social-links a {
+				color: var(--text-color);
+			}
+
+			html.dark .social-links a:hover {
+				color: var(--link-color);
+			}
+
+			html.dark .section-title {
+				color: var(--text-color);
+			}
+
+			html.dark .read-more {
+				color: var(--link-color);
+			}
+
+			/* Services/SEO section */
+			.services-info {
+				padding-top: 60px;
+				border-top: 1px solid rgba(0, 0, 0, 0.08);
+				margin-top: 60px;
+			}
+
+			.services-content {
+				max-width: 650px;
+			}
+
+			.services-content p {
+				font-size: 1.05rem;
+				line-height: 1.8;
+				color: #4a5568;
+				margin-bottom: 24px;
+			}
+
+			.services-content h3 {
+				font-family: 'Georgia', serif;
+				font-size: 1.4rem;
+				font-weight: 600;
+				color: #2d3748;
+				margin-top: 32px;
+				margin-bottom: 16px;
+			}
+
+			.services-list {
+				list-style: none;
+				margin-bottom: 24px;
+			}
+
+			.services-list li {
+				font-size: 1rem;
+				line-height: 1.7;
+				color: #4a5568;
+				padding: 8px 0;
+				padding-left: 20px;
+				position: relative;
+			}
+
+			.services-list li::before {
+				content: '→';
+				position: absolute;
+				left: 0;
+				color: #4299e1;
+			}
+
+			.cta-link {
+				color: #4299e1;
+				font-weight: 500;
+				text-decoration: none;
+			}
+
+			.cta-link:hover {
+				text-decoration: underline;
+			}
+
+			html.dark .services-info {
+				border-top-color: rgba(255, 255, 255, 0.1);
+			}
+
+			html.dark .services-content p {
+				color: var(--text-secondary);
+			}
+
+			html.dark .services-content h3 {
+				color: var(--text-color);
+			}
+
+			html.dark .services-list li {
+				color: var(--text-secondary);
+			}
+
+			html.dark .services-list li::before {
+				color: var(--link-color);
+			}
+
+			html.dark .cta-link {
+				color: var(--link-color);
+			}
+
+			/* Responsive */
+			@media (max-width: 1024px) {
+				.main-content {
+					padding: 100px 60px 60px 60px;
+				}
+
+				.projects-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.main-content {
+					padding: 100px 24px 60px 24px;
+				}
+
+				.name {
+					font-size: 3rem;
+				}
+
+				.bio {
+					font-size: 1rem;
+				}
+
+				.projects-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.section-title {
+					font-size: 1.8rem;
+				}
+			}
 		</style>
 	</head>
 	<body>
 		<div class="dappled-light"></div>
 		<Navbar />
+
+		<main class="main-content">
+			<section class="hero" id="home">
+				<h1 class="name">Cyprus<br/>Web Design</h1>
+
+				<p class="bio">
+					We create stunning, responsive websites for businesses across Cyprus.
+					After years of helping companies establish their digital presence, we've
+					mastered the art of turning ideas into beautiful, functional websites.
+					We measure success by <em>client satisfaction</em>: from concept to launch,
+					we deliver excellence. Based in Limassol. <a href="#about" class="read-more">Read more »</a>
+				</p>
+
+				<ul class="facts">
+					{personalFacts.map(fact => (
+						<li class="fact">{fact}</li>
+					))}
+				</ul>
+
+				<button class="more-btn" id="more-facts-btn">
+					MORE <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</button>
+
+				<div class="social-links">
+					<a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+						<Linkedin size={22} />
+					</a>
+					<a href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)">
+						<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+					</a>
+					<a href="mailto:info@cypruswebdesign.com" aria-label="Email">
+						<Mail size={22} />
+					</a>
+					<a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">
+						<Github size={22} />
+					</a>
+				</div>
+			</section>
+
+			<section class="recent-work" id="portfolio">
+				<h2 class="section-title">Recent Work</h2>
+
+				<div class="projects-grid">
+					{projects.map(project => (
+						<a href="#" class="project-card" style={`background-color: ${project.bgColor}; color: ${project.textColor}`}>
+							<span class="project-name">{project.name}</span>
+						</a>
+					))}
+				</div>
+			</section>
+
+			<section class="services-info" id="services">
+				<h2 class="section-title">Web Design Services in Cyprus</h2>
+
+				<div class="services-content">
+					<p>
+						As a leading <strong>web design agency in Cyprus</strong>, we specialize in creating custom websites
+						that help businesses thrive in the digital landscape. Whether you're a startup in Limassol,
+						an established company in Nicosia, or a tourism business in Paphos, we deliver tailored solutions
+						that meet your unique needs.
+					</p>
+
+					<h3>Our Web Development Services</h3>
+					<p>
+						We offer comprehensive <strong>website development in Cyprus</strong> including responsive web design,
+						e-commerce solutions, content management systems, and custom web applications. Every website we build
+						is optimized for speed, security, and search engines to ensure maximum visibility for your business.
+					</p>
+
+					<h3>Why Choose Cyprus Web Design?</h3>
+					<ul class="services-list">
+						<li><strong>Local Expertise:</strong> Deep understanding of the Cyprus market and business landscape</li>
+						<li><strong>Modern Technologies:</strong> We use the latest frameworks and tools for optimal performance</li>
+						<li><strong>SEO-Focused:</strong> Every website is built with search engine optimization in mind</li>
+						<li><strong>Responsive Design:</strong> Your site will look perfect on desktops, tablets, and mobile devices</li>
+						<li><strong>Ongoing Support:</strong> We provide maintenance and updates to keep your site running smoothly</li>
+					</ul>
+
+					<h3>Serving All of Cyprus</h3>
+					<p>
+						Our <strong>web design services</strong> are available throughout Cyprus. We work with clients in
+						<strong>Limassol</strong>, <strong>Nicosia</strong>, <strong>Paphos</strong>, <strong>Larnaca</strong>,
+						and <strong>Famagusta</strong>. Whether you need a simple business website, a complex e-commerce platform,
+						or a complete digital transformation, we're here to help your business succeed online.
+					</p>
+
+					<p>
+						Ready to start your project? <a href="mailto:info@cypruswebdesign.com" class="cta-link">Contact us today</a>
+						for a free consultation and let's discuss how we can bring your vision to life.
+					</p>
+				</div>
+			</section>
+		</main>
 	</body>
 </html>
