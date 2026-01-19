@@ -1,24 +1,24 @@
 ---
-import { Home, User, Menu, Pencil, Moon, Sun } from '@lucide/astro';
+import { Home, User, Tag, MapPin, Moon, Sun } from '@lucide/astro';
 ---
 
 <nav class="navbar">
 	<div class="nav-links">
-		<a href="#home" class="nav-item active" data-section="home" aria-label="Home">
+		<a href="/" class="nav-item active" data-section="home" aria-label="Home">
 			<Home size={22} />
 			<span class="nav-label">Home</span>
 		</a>
-		<a href="#about" class="nav-item" data-section="about" aria-label="About">
+		<a href="/about" class="nav-item" aria-label="About">
 			<User size={22} />
 			<span class="nav-label">About</span>
 		</a>
-		<a href="#services" class="nav-item" data-section="services" aria-label="Services">
-			<Menu size={22} />
-			<span class="nav-label">Services</span>
+		<a href="/prices" class="nav-item" aria-label="Prices">
+			<Tag size={22} />
+			<span class="nav-label">Prices</span>
 		</a>
-		<a href="#portfolio" class="nav-item" data-section="portfolio" aria-label="Portfolio">
-			<Pencil size={22} />
-			<span class="nav-label">Portfolio</span>
+		<a href="/web-design-limassol" class="nav-item" aria-label="Limassol">
+			<MapPin size={22} />
+			<span class="nav-label">Limassol</span>
 		</a>
 	</div>
 	<button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">

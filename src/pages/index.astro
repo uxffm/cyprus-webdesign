@@ -1,6 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import { Linkedin, Mail, Github } from '@lucide/astro';
+import { ClientRouter } from 'astro:transitions';
 
 const siteTitle = "Cyprus Web Design | Professional Website Development in Cyprus";
 const siteDescription = "Leading web design agency in Cyprus. We create stunning, responsive websites for businesses across Limassol, Nicosia, Paphos, and Larnaca. Custom web development, SEO, and digital solutions.";
@@ -75,6 +76,9 @@ const projects = [
 
 		<!-- Generator -->
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- View Transitions -->
+		<ClientRouter />
 
 		<!-- Structured Data / JSON-LD for Local Business -->
 		<script type="application/ld+json">

@@ -1,5 +1,6 @@
 ---
 import Navbar from '../components/Navbar.astro';
+import { ClientRouter } from 'astro:transitions';
 
 const siteTitle = "About Us | Cyprus Web Design - Professional Web Development Agency";
 const siteDescription = "Learn about Cyprus Web Design, a leading web development agency based in Limassol. We create stunning websites for businesses across Cyprus including Nicosia, Paphos, and Larnaca.";
@@ -35,8 +36,9 @@ const siteName = "Cyprus Web Design";
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<ClientRouter />
 
-		<script type="application/ld+json">
+		<script type="application/ld+json" is:inline>
 		{
 			"@context": "https://schema.org",
 			"@type": "AboutPage",
