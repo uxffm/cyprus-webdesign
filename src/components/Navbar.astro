@@ -205,15 +205,26 @@ import { Home, User, Tag, MapPin, Moon, Sun } from '@lucide/astro';
 		}
 	})();
 
-	// Setup click handler (only once)
+	// Setup handlers (only once)
 	if (!window.__themeToggleSetup) {
 		window.__themeToggleSetup = true;
+
+		// Click handler for toggle button
 		document.addEventListener('click', (e) => {
 			const toggle = e.target.closest('#theme-toggle');
 			if (toggle) {
 				document.documentElement.classList.toggle('dark');
 				const isDark = document.documentElement.classList.contains('dark');
 				localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			}
+		});
+
+		// Preserve dark mode during view transitions
+		document.addEventListener('astro:before-swap', (e) => {
+			const savedTheme = localStorage.getItem('theme');
+			const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+				e.newDocument.documentElement.classList.add('dark');
 			}
 		});
 	}
