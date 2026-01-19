@@ -4,19 +4,19 @@ import { Home, User, Tag, MapPin, Moon, Sun } from '@lucide/astro';
 
 <nav class="navbar">
 	<div class="nav-links">
-		<a href="/" class="nav-item active" data-section="home" aria-label="Home">
+		<a href="/" class="nav-item active" aria-label="Home" data-astro-prefetch="hover">
 			<Home size={22} />
 			<span class="nav-label">Home</span>
 		</a>
-		<a href="/about" class="nav-item" aria-label="About">
+		<a href="/about" class="nav-item" aria-label="About" data-astro-prefetch="hover">
 			<User size={22} />
 			<span class="nav-label">About</span>
 		</a>
-		<a href="/prices" class="nav-item" aria-label="Prices">
+		<a href="/prices" class="nav-item" aria-label="Prices" data-astro-prefetch="hover">
 			<Tag size={22} />
 			<span class="nav-label">Prices</span>
 		</a>
-		<a href="/web-design-limassol" class="nav-item" aria-label="Limassol">
+		<a href="/web-design-limassol" class="nav-item" aria-label="Limassol" data-astro-prefetch="hover">
 			<MapPin size={22} />
 			<span class="nav-label">Limassol</span>
 		</a>
@@ -195,37 +195,26 @@ import { Home, User, Tag, MapPin, Moon, Sun } from '@lucide/astro';
 	}
 </style>
 
-<script>
-	// Initialize theme immediately (before page renders)
-	function initTheme() {
+<script is:inline>
+	// Initialize theme from localStorage (runs immediately)
+	(function() {
 		const savedTheme = localStorage.getItem('theme');
 		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
 		if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
 			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
 		}
-	}
+	})();
 
-	// Setup event listeners
-	function setupListeners() {
-		const themeToggle = document.getElementById('theme-toggle');
-
-		themeToggle?.addEventListener('click', () => {
-			document.documentElement.classList.toggle('dark');
-			const isDark = document.documentElement.classList.contains('dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
+	// Setup click handler (only once)
+	if (!window.__themeToggleSetup) {
+		window.__themeToggleSetup = true;
+		document.addEventListener('click', (e) => {
+			const toggle = e.target.closest('#theme-toggle');
+			if (toggle) {
+				document.documentElement.classList.toggle('dark');
+				const isDark = document.documentElement.classList.contains('dark');
+				localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			}
 		});
 	}
-
-	// Run on initial load
-	initTheme();
-	setupListeners();
-
-	// Re-run after view transitions
-	document.addEventListener('astro:after-swap', () => {
-		initTheme();
-		setupListeners();
-	});
 </script>
