@@ -259,6 +259,27 @@ const projects = [
 			/* Hero section */
 			.hero {
 				margin-bottom: 80px;
+				position: relative;
+			}
+
+			.hero-pattern {
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 60vw;
+				height: 100vh;
+				background-image: url('/unnamed.jpg');
+				background-size: 500px;
+				background-repeat: repeat;
+				background-position: center;
+				opacity: 0.15;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			html.dark .hero-pattern {
+				opacity: 0.1;
+				filter: invert(1) brightness(0.8);
 			}
 
 			.name {
@@ -348,6 +369,11 @@ const projects = [
 			/* Recent Work section */
 			.recent-work {
 				padding-top: 20px;
+				margin-bottom: 0;
+			}
+
+			.recent-work .section-title {
+				margin-bottom: 0;
 			}
 
 			.section-title {
@@ -358,32 +384,63 @@ const projects = [
 				margin-bottom: 32px;
 			}
 
-			.projects-grid {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 20px;
+			.projects-scroll-container {
+				width: 100vw;
+				margin-left: calc(-50vw + 50%);
+				overflow-x: auto;
+				overflow-y: hidden;
+				padding: 0 0 24px 0;
+				position: relative;
+				-webkit-overflow-scrolling: touch;
+				scrollbar-width: none;
+				-ms-overflow-style: none;
+			}
+
+			.projects-scroll-container::-webkit-scrollbar {
+				display: none;
+			}
+
+			.projects-track {
+				display: flex;
+				gap: 24px;
+				padding-left: 200px;
+				padding-right: 60px;
+				width: max-content;
+				transform: translateX(50vw);
+				opacity: 0;
+				transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+			}
+
+			.projects-track.visible {
+				transform: translateX(0);
+				opacity: 1;
 			}
 
 			.project-card {
-				aspect-ratio: 1;
+				flex: 0 0 400px;
+				height: 300px;
 				border-radius: 16px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				text-decoration: none;
-				font-size: 1.4rem;
+				font-size: 1.6rem;
 				font-weight: 600;
 				transition: all 0.3s ease;
 				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 			}
 
 			.project-card:hover {
-				transform: translateY(-4px);
+				transform: translateY(-4px) scale(1.02);
 				box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 			}
 
 			.project-name {
 				text-align: center;
+			}
+
+			.main-content-continued {
+				padding-top: 0;
 			}
 
 			/* Dark mode styles */
@@ -554,8 +611,14 @@ const projects = [
 					padding: 100px 60px 60px 60px;
 				}
 
-				.projects-grid {
-					grid-template-columns: repeat(2, 1fr);
+				.projects-track {
+					padding-left: 60px;
+					padding-right: 40px;
+				}
+
+				.project-card {
+					flex: 0 0 350px;
+					height: 260px;
 				}
 			}
 
@@ -572,8 +635,15 @@ const projects = [
 					font-size: 1rem;
 				}
 
-				.projects-grid {
-					grid-template-columns: 1fr;
+				.projects-track {
+					padding-left: 24px;
+					padding-right: 24px;
+				}
+
+				.project-card {
+					flex: 0 0 300px;
+					height: 220px;
+					font-size: 1.3rem;
 				}
 
 				.section-title {
@@ -584,6 +654,7 @@ const projects = [
 	</head>
 	<body>
 		<div class="dappled-light"></div>
+		<div class="hero-pattern"></div>
 		<Navbar />
 
 		<main class="main-content">
@@ -591,11 +662,13 @@ const projects = [
 				<h1 class="name">Cyprus<br/>Web Design</h1>
 
 				<p class="bio">
-					I create stunning, responsive websites for businesses across Cyprus.
-					After years of helping companies establish their digital presence, I've
-					mastered the art of turning ideas into beautiful, functional websites.
-					I measure success by <em>client satisfaction</em>: from concept to launch,
-					I deliver excellence. Based in Limassol. <a href="#about" class="read-more">Read more »</a>
+					A website should be your hardest-working employee, not just a static brochure.
+				</p>
+				<p class="bio">
+					<strong>I build websites that actually convert.</strong> Representing your brand perfectly while acting as a 24/7 salesperson for your business.
+				</p>
+				<p class="bio">
+					Because I leverage modern AI-driven development tools, I can build high-performance, custom sites in half the time of a traditional agency. You shouldn't have to pay "old world" prices for "new world" technology. I pass those efficiency savings directly to you, giving you a world-class site without the inflated price tag. <a href="/about" class="read-more">Read more »</a>
 				</p>
 
 				<ul class="facts">
@@ -626,20 +699,30 @@ const projects = [
 
 			<section class="recent-work" id="portfolio">
 				<h2 class="section-title">Recent Work</h2>
-
-				<div class="projects-grid">
-					{projects.map(project => (
-						<a href="#" class="project-card" style={`background-color: ${project.bgColor}; color: ${project.textColor}`}>
-							<span class="project-name">{project.name}</span>
-						</a>
-					))}
-				</div>
 			</section>
+		</main>
+
+		<div class="projects-scroll-container">
+			<div class="projects-track">
+				{projects.map(project => (
+					<a href="#" class="project-card" style={`background-color: ${project.bgColor}; color: ${project.textColor}`}>
+						<span class="project-name">{project.name}</span>
+					</a>
+				))}
+			</div>
+		</div>
+
+		<main class="main-content main-content-continued">
 
 			<section class="services-info" id="services">
 				<h2 class="section-title">Web Design Services in Cyprus</h2>
 
 				<div class="services-content">
+					<p>
+						Most business websites in Cyprus look great but fail to actually bring in new customers.
+						I build high-performance websites designed specifically to turn your local visitors into loyal clients.
+					</p>
+
 					<p>
 						As a leading <strong>web designer in Cyprus</strong>, I specialize in creating custom websites
 						that help businesses thrive in the digital landscape. Whether you're a startup in Limassol,
@@ -678,5 +761,37 @@ const projects = [
 				</div>
 			</section>
 		</main>
+
+		<script>
+			// Scroll animation for projects
+			function initProjectsAnimation() {
+				const projectsContainer = document.querySelector('.projects-scroll-container');
+				const projectsTrack = document.querySelector('.projects-track');
+				if (!projectsContainer || !projectsTrack) return;
+
+				// Reset state for view transitions
+				projectsTrack.classList.remove('visible');
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							projectsTrack.classList.add('visible');
+							observer.unobserve(entry.target);
+						}
+					});
+				}, {
+					threshold: 0,
+					rootMargin: '0px 0px -100px 0px'
+				});
+
+				observer.observe(projectsContainer);
+			}
+
+			// Run on initial load
+			initProjectsAnimation();
+
+			// Re-run after view transitions
+			document.addEventListener('astro:after-swap', initProjectsAnimation);
+		</script>
 	</body>
 </html>
