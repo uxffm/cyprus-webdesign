@@ -1,0 +1,568 @@
+---
+import Navbar from '../components/Navbar.astro';
+import { ClientRouter } from 'astro:transitions';
+
+const siteTitle = "Web Design Paphos | Professional Website Development in Paphos, Cyprus";
+const siteDescription = "Looking for web design in Paphos? I create stunning, affordable websites for businesses in Paphos. Local web designer with proven results. Get a free quote today.";
+const siteUrl = "https://webdesign-cyprus.com";
+const siteName = "Cyprus Web Design";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<title>{siteTitle}</title>
+		<meta name="title" content={siteTitle} />
+		<meta name="description" content={siteDescription} />
+		<meta name="keywords" content="web design paphos, website design paphos, web developer paphos, paphos web designer, website development paphos, affordable web design paphos, professional website paphos, e-commerce paphos, SEO paphos" />
+		<meta name="author" content={siteName} />
+		<meta name="robots" content="index, follow" />
+
+		<link rel="canonical" href={`${siteUrl}/web-design-paphos`} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`${siteUrl}/web-design-paphos`} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+		<meta property="og:site_name" content={siteName} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={siteTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+
+		<meta name="geo.region" content="CY-05" />
+		<meta name="geo.placename" content="Paphos" />
+		<meta name="geo.position" content="34.7593;32.4181" />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<ClientRouter />
+
+		<script type="application/ld+json" is:inline>
+		{
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Cyprus Web Design - Paphos",
+			"description": "Professional web design and development services in Paphos, Cyprus. I create beautiful, functional websites for local businesses.",
+			"url": "https://webdesign-cyprus.com/web-design-paphos",
+			"telephone": "+357-00-000000",
+			"email": "sayhi@lukaszadam.com",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Paphos",
+				"addressRegion": "Paphos",
+				"addressCountry": "CY"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": "34.7593",
+				"longitude": "32.4181"
+			},
+			"areaServed": {
+				"@type": "City",
+				"name": "Paphos"
+			},
+			"serviceType": [
+				"Web Design",
+				"Web Development",
+				"E-commerce Development",
+				"SEO Services"
+			],
+			"priceRange": "$$"
+		}
+		</script>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+				background: #e8e6e3;
+				color: #1e293b;
+				min-height: 100vh;
+				position: relative;
+				overflow-x: hidden;
+			}
+
+			.dappled-light {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+				overflow: hidden;
+			}
+
+			.dappled-light::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				right: -20%;
+				width: 150%;
+				height: 200%;
+				background:
+					repeating-linear-gradient(
+						-55deg,
+						transparent 0px,
+						transparent 80px,
+						rgba(255,255,255,0.7) 80px,
+						rgba(255,255,255,0.7) 120px,
+						transparent 120px,
+						transparent 200px
+					);
+				filter: blur(40px);
+				opacity: 0.6;
+			}
+
+			.dappled-light::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.3) 100%);
+			}
+
+			.main-content {
+				position: relative;
+				z-index: 1;
+				padding: 80px 120px 80px 200px;
+				max-width: 1000px;
+			}
+
+			.page-title {
+				font-family: 'Georgia', serif;
+				font-size: 3rem;
+				font-weight: 700;
+				line-height: 1.1;
+				color: #2d3748;
+				margin-bottom: 16px;
+				letter-spacing: -0.02em;
+			}
+
+			.page-subtitle {
+				font-size: 1.25rem;
+				color: #4a5568;
+				margin-bottom: 48px;
+				max-width: 600px;
+				line-height: 1.6;
+			}
+
+			.content-section {
+				margin-bottom: 48px;
+			}
+
+			.content-section p {
+				font-size: 1.1rem;
+				line-height: 1.8;
+				color: #4a5568;
+				margin-bottom: 24px;
+				max-width: 700px;
+			}
+
+			.section-title {
+				font-family: 'Georgia', serif;
+				font-size: 1.8rem;
+				font-weight: 600;
+				color: #2d3748;
+				margin-bottom: 20px;
+				margin-top: 48px;
+			}
+
+			.section-title:first-of-type {
+				margin-top: 0;
+			}
+
+			/* Services Grid */
+			.services-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 24px;
+				margin-bottom: 48px;
+			}
+
+			.service-card {
+				background: rgba(255, 255, 255, 0.7);
+				border-radius: 16px;
+				padding: 28px;
+				border: 1px solid rgba(0, 0, 0, 0.05);
+			}
+
+			.service-card h3 {
+				font-family: 'Georgia', serif;
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: #2d3748;
+				margin-bottom: 12px;
+			}
+
+			.service-card p {
+				font-size: 0.95rem;
+				line-height: 1.6;
+				color: #4a5568;
+				margin-bottom: 0;
+			}
+
+			/* Benefits Section */
+			.benefits-list {
+				list-style: none;
+				margin-bottom: 32px;
+			}
+
+			.benefits-list li {
+				font-size: 1.05rem;
+				line-height: 1.7;
+				color: #4a5568;
+				padding: 12px 0;
+				padding-left: 28px;
+				position: relative;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+			}
+
+			.benefits-list li:last-child {
+				border-bottom: none;
+			}
+
+			.benefits-list li::before {
+				content: '✓';
+				position: absolute;
+				left: 0;
+				color: #48bb78;
+				font-weight: 600;
+			}
+
+			/* Areas We Serve */
+			.areas-grid {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				margin-bottom: 32px;
+			}
+
+			.area-tag {
+				background: rgba(255, 255, 255, 0.8);
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				color: #4a5568;
+				border: 1px solid rgba(0, 0, 0, 0.05);
+			}
+
+			/* CTA Section */
+			.cta-section {
+				background: rgba(255, 255, 255, 0.7);
+				border: 1px solid rgba(0, 0, 0, 0.05);
+				border-radius: 16px;
+				padding: 40px;
+				margin-top: 48px;
+				margin-bottom: 48px;
+			}
+
+			.cta-section h2 {
+				font-family: 'Georgia', serif;
+				font-size: 1.6rem;
+				font-weight: 600;
+				color: #2d3748;
+				margin-bottom: 16px;
+			}
+
+			.cta-section p {
+				color: #4a5568;
+				margin-bottom: 24px;
+				max-width: 500px;
+				line-height: 1.6;
+			}
+
+			.cta-button {
+				display: inline-block;
+				padding: 14px 28px;
+				background: #2d3748;
+				color: #fff;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: 600;
+				transition: all 0.2s ease;
+			}
+
+			.cta-button:hover {
+				background: #1a202c;
+				transform: translateY(-2px);
+			}
+
+			.back-link {
+				display: inline-block;
+				color: #4299e1;
+				text-decoration: none;
+				font-weight: 500;
+			}
+
+			.back-link:hover {
+				text-decoration: underline;
+			}
+
+			/* FAQ Section */
+			.faq-section {
+				margin-top: 48px;
+			}
+
+			.faq-item {
+				background: rgba(255, 255, 255, 0.5);
+				border-radius: 12px;
+				padding: 24px;
+				margin-bottom: 16px;
+			}
+
+			.faq-question {
+				font-weight: 600;
+				color: #2d3748;
+				margin-bottom: 12px;
+				font-size: 1.1rem;
+			}
+
+			.faq-answer {
+				color: #4a5568;
+				line-height: 1.7;
+			}
+
+			/* Dark mode */
+			html.dark body {
+				background: #1a1a2e;
+				color: #e2e8f0;
+			}
+
+			html.dark .dappled-light::before {
+				background:
+					repeating-linear-gradient(
+						-55deg,
+						transparent 0px,
+						transparent 80px,
+						rgba(255,255,255,0.1) 80px,
+						rgba(255,255,255,0.1) 120px,
+						transparent 120px,
+						transparent 200px
+					);
+				opacity: 0.3;
+			}
+
+			html.dark .dappled-light::after {
+				background: linear-gradient(135deg, transparent 40%, rgba(100, 100, 150, 0.1) 100%);
+			}
+
+			html.dark .page-title,
+			html.dark .section-title,
+			html.dark .service-card h3,
+			html.dark .cta-section h2,
+			html.dark .faq-question {
+				color: #e2e8f0;
+			}
+
+			html.dark .page-subtitle,
+			html.dark .content-section p,
+			html.dark .service-card p,
+			html.dark .benefits-list li,
+			html.dark .cta-section p,
+			html.dark .faq-answer {
+				color: #a0aec0;
+			}
+
+			html.dark .service-card,
+			html.dark .cta-section,
+			html.dark .faq-item {
+				background: rgba(255, 255, 255, 0.05);
+				border-color: rgba(255, 255, 255, 0.1);
+			}
+
+			html.dark .area-tag {
+				background: rgba(255, 255, 255, 0.1);
+				border-color: rgba(255, 255, 255, 0.1);
+				color: #a0aec0;
+			}
+
+			html.dark .benefits-list li {
+				border-bottom-color: rgba(255, 255, 255, 0.05);
+			}
+
+			html.dark .cta-button {
+				background: #e2e8f0;
+				color: #1a1a2e;
+			}
+
+			html.dark .cta-button:hover {
+				background: #fff;
+			}
+
+			html.dark .back-link {
+				color: #63b3ed;
+			}
+
+			/* Responsive */
+			@media (max-width: 1024px) {
+				.main-content {
+					padding: 100px 60px 60px 60px;
+				}
+
+				.services-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 768px) {
+				.main-content {
+					padding: 100px 24px 60px 24px;
+				}
+
+				.page-title {
+					font-size: 2.2rem;
+				}
+
+				.section-title {
+					font-size: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dappled-light"></div>
+		<Navbar />
+
+		<main class="main-content">
+			<h1 class="page-title">Web Design in Paphos</h1>
+			<p class="page-subtitle">Professional website design and development for businesses in Paphos, Cyprus. Local expertise, global standards.</p>
+
+			<div class="content-section">
+				<p>
+					Looking for a <strong>web designer in Paphos</strong>? You've come to the right place. I'm a local
+					web designer who understands the Paphos business community. From the historic harbour and tourist
+					strip to the growing residential areas, I've helped businesses of all sizes establish
+					their online presence.
+				</p>
+
+				<p>
+					Paphos is a UNESCO World Heritage city and one of Cyprus's top tourist destinations — home to
+					hotels, restaurants, real estate agencies, and a thriving expat community. Your website needs to
+					capture that unique character. I create websites that not only look great but actually help you
+					attract customers and grow your business.
+				</p>
+			</div>
+
+			<h2 class="section-title">My Web Design Services in Paphos</h2>
+
+			<div class="services-grid">
+				<div class="service-card">
+					<h3>Business Websites</h3>
+					<p>Professional websites for Paphos businesses — from law firms and accounting offices to restaurants and retail shops. I create sites that build trust and convert visitors.</p>
+				</div>
+
+				<div class="service-card">
+					<h3>E-commerce & Online Stores</h3>
+					<p>Sell your products online with a custom e-commerce website. Perfect for Paphos shops looking to reach customers across Cyprus and beyond.</p>
+				</div>
+
+				<div class="service-card">
+					<h3>Tourism & Hospitality</h3>
+					<p>Websites for hotels, villas, tour operators, and restaurants. I know what tourists searching for Paphos experiences are looking for.</p>
+				</div>
+
+				<div class="service-card">
+					<h3>Real Estate Websites</h3>
+					<p>Property listing websites for Paphos real estate agents. Showcase properties beautifully and capture leads effectively.</p>
+				</div>
+			</div>
+
+			<h2 class="section-title">Why Choose a Local Paphos Web Designer?</h2>
+
+			<ul class="benefits-list">
+				<li><strong>I understand the local market:</strong> I know Paphos businesses and what their customers expect</li>
+				<li><strong>Face-to-face meetings:</strong> I'm here in Paphos — I can meet in person to discuss your project</li>
+				<li><strong>Local SEO expertise:</strong> I know how to help your business rank for "Paphos" searches</li>
+				<li><strong>Quick support:</strong> Same timezone, same city — I'm always available when you need me</li>
+				<li><strong>Network connections:</strong> I can recommend trusted local photographers, copywriters, and other professionals</li>
+			</ul>
+
+			<h2 class="section-title">Areas I Serve in Paphos</h2>
+			<p style="color: #4a5568; margin-bottom: 20px;">I work with businesses throughout the Paphos district:</p>
+
+			<div class="areas-grid">
+				<span class="area-tag">Kato Paphos</span>
+				<span class="area-tag">Paphos Harbour</span>
+				<span class="area-tag">Coral Bay</span>
+				<span class="area-tag">Peyia</span>
+				<span class="area-tag">Chloraka</span>
+				<span class="area-tag">Emba</span>
+				<span class="area-tag">Yeroskipou</span>
+				<span class="area-tag">Tala</span>
+				<span class="area-tag">Kissonerga</span>
+				<span class="area-tag">Tremithousa</span>
+				<span class="area-tag">Mandria</span>
+				<span class="area-tag">Anarita</span>
+			</div>
+
+			<h2 class="section-title">Frequently Asked Questions</h2>
+
+			<div class="faq-section">
+				<div class="faq-item">
+					<h3 class="faq-question">How much does a website cost in Paphos?</h3>
+					<p class="faq-answer">
+						Our website packages start from €500 for a simple business site. Most Paphos businesses
+						choose our Business package at €1,200 which includes custom design, SEO optimization, and
+						ongoing support. <a href="/prices" style="color: #4299e1;">View our full pricing</a>.
+					</p>
+				</div>
+
+				<div class="faq-item">
+					<h3 class="faq-question">Can we meet in person to discuss my project?</h3>
+					<p class="faq-answer">
+						Absolutely! I'm available in the Paphos area and happy to meet at your office, a local café, or
+						my workspace. I find that face-to-face meetings help me better understand your business and
+						create a website that truly fits your needs.
+					</p>
+				</div>
+
+				<div class="faq-item">
+					<h3 class="faq-question">How long does it take to build a website?</h3>
+					<p class="faq-answer">
+						A typical business website takes 2-3 weeks from start to finish. If you need something
+						faster, I can often accommodate rush projects. E-commerce sites and more complex projects
+						may take 3-4 weeks.
+					</p>
+				</div>
+
+				<div class="faq-item">
+					<h3 class="faq-question">Will my website show up when people search for businesses in Paphos?</h3>
+					<p class="faq-answer">
+						Yes! I optimize every website for local search. This includes setting up your Google Business
+						Profile, adding location-specific content, and implementing technical SEO best practices.
+						My goal is to help you rank for searches like "your service + Paphos."
+					</p>
+				</div>
+			</div>
+
+			<div class="cta-section">
+				<h2>Ready to Get Started?</h2>
+				<p>
+					Let's discuss your project over a coffee. I'll give you honest advice about what you need
+					(and what you don't) — no pressure, no obligation.
+				</p>
+				<a href="mailto:sayhi@lukaszadam.com?subject=Web%20Design%20Project%20in%20Paphos" class="cta-button">Get Your Free Quote</a>
+			</div>
+
+			<a href="/" class="back-link">← Back to Home</a>
+		</main>
+	</body>
+</html>
